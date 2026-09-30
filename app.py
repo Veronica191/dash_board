@@ -28,13 +28,18 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     .stApp {
-        background: #F5F7FA;
-        color: #17324D;
+        background: #0B1220;
+        color: #FFFFFF;
         font-family: 'Inter', sans-serif;
     }
 
+    [data-testid="stMain"] {
+        background: #0B1220;
+        color: #FFFFFF;
+    }
+
     [data-testid="stSidebar"] {
-        background: #17324D;
+        background: #111827;
     }
 
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
@@ -68,14 +73,19 @@ st.markdown(
     .stMarkdown p,
     .stCaption,
     [data-testid="stCaptionContainer"] {
-        color: #304B63 !important;
+        color: #FFFFFF !important;
+    }
+
+    [data-testid="stMain"] [data-testid="stWidgetLabel"] p,
+    [data-testid="stMain"] label {
+        color: #FFFFFF !important;
     }
 
     h1,
     h2,
     h3,
     h4 {
-        color: #17324D !important;
+        color: #FFFFFF !important;
     }
 
     [data-testid="stTextInput"] input {
@@ -91,11 +101,13 @@ st.markdown(
     }
 
     [data-testid="stAlert"] {
-        color: #17324D;
+        background: #162235;
+        color: #FFFFFF;
+        border-color: #334155;
     }
 
     [data-testid="stAlert"] p {
-        color: #17324D !important;
+        color: #FFFFFF !important;
     }
 
     .dashboard-header {
@@ -115,21 +127,21 @@ st.markdown(
     }
 
     .dashboard-subtitle {
-        color: #F2C94C !important;
+        color: #FFFFFF !important;
         font-size: 1rem;
         font-weight: 500;
         margin: 0.45rem 0 0 0;
     }
 
     h3 {
-        color: #17324D;
+        color: #FFFFFF;
         font-weight: 700;
         margin-top: 2rem;
     }
 
     [data-testid="stMetric"] {
-        background: #FFFFFF;
-        border: 1px solid #E3E8EF;
+        background: #162235;
+        border: 1px solid #334155;
         border-top: 4px solid #D4A72C;
         border-radius: 14px;
         padding: 1rem 1.1rem;
@@ -137,17 +149,17 @@ st.markdown(
     }
 
     [data-testid="stMetricLabel"] {
-        color: #627386;
+        color: #FFFFFF;
         font-weight: 600;
     }
 
     [data-testid="stMetricValue"] {
-        color: #17324D;
+        color: #FFFFFF;
         font-weight: 800;
     }
 
     [data-testid="stDataFrame"] {
-        border: 1px solid #E3E8EF;
+        border: 1px solid #334155;
         border-radius: 12px;
         overflow: hidden;
     }
@@ -430,6 +442,7 @@ if df is not None:
             age_chart.update_traces(
                 texttemplate="%{text:.2f}%",
                 textposition="outside",
+                textfont_color="#FFFFFF",
                 hovertemplate=(
                     "Age group: %{x}<br>"
                     "Observed rate: %{y:.2f}%<br>"
@@ -440,7 +453,11 @@ if df is not None:
             age_chart.update_layout(
                 yaxis_title="Unemployment Rate (%)",
                 xaxis_title=None,
-                font={"family": "Inter, sans-serif", "color": "#17324D"},
+                font={"family": "Inter, sans-serif", "color": "#FFFFFF"},
+                paper_bgcolor="#0B1220",
+                plot_bgcolor="#0B1220",
+                xaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
+                yaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
                 yaxis_range=[0, max(35, age_rates["unemployment_rate"].max() + 5)],
                 showlegend=False,
             )
@@ -472,6 +489,7 @@ if df is not None:
             education_chart.update_traces(
                 texttemplate="%{text:.2f}%",
                 textposition="outside",
+                textfont_color="#FFFFFF",
                 hovertemplate=(
                     "Education: %{x}<br>"
                     "Observed rate: %{y:.2f}%<br>"
@@ -482,7 +500,11 @@ if df is not None:
             education_chart.update_layout(
                 yaxis_title="Unemployment Rate (%)",
                 xaxis_title=None,
-                font={"family": "Inter, sans-serif", "color": "#17324D"},
+                font={"family": "Inter, sans-serif", "color": "#FFFFFF"},
+                paper_bgcolor="#0B1220",
+                plot_bgcolor="#0B1220",
+                xaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
+                yaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
                 yaxis_range=[
                     0,
                     max(35, education_rates["unemployment_rate"].max() + 5),
@@ -515,6 +537,7 @@ if df is not None:
             gender_chart.update_traces(
                 texttemplate="%{text:.2f}%",
                 textposition="outside",
+                textfont_color="#FFFFFF",
                 hovertemplate=(
                     "Gender: %{x}<br>"
                     "Observed rate: %{y:.2f}%<br>"
@@ -525,7 +548,11 @@ if df is not None:
             gender_chart.update_layout(
                 yaxis_title="Unemployment Rate (%)",
                 xaxis_title=None,
-                font={"family": "Inter, sans-serif", "color": "#17324D"},
+                font={"family": "Inter, sans-serif", "color": "#FFFFFF"},
+                paper_bgcolor="#0B1220",
+                plot_bgcolor="#0B1220",
+                xaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
+                yaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
                 yaxis_range=[0, max(35, gender_rates["unemployment_rate"].max() + 5)],
                 showlegend=False,
             )
@@ -558,6 +585,7 @@ if df is not None:
             region_chart.update_traces(
                 texttemplate="%{text:.2f}%",
                 textposition="outside",
+                textfont_color="#FFFFFF",
                 hovertemplate=(
                     "Region: %{y}<br>"
                     "Observed rate: %{x:.2f}%<br>"
@@ -568,13 +596,20 @@ if df is not None:
             region_chart.update_layout(
                 xaxis_title="Unemployment Rate (%)",
                 yaxis_title=None,
-                font={"family": "Inter, sans-serif", "color": "#17324D"},
+                font={"family": "Inter, sans-serif", "color": "#FFFFFF"},
+                paper_bgcolor="#0B1220",
+                plot_bgcolor="#0B1220",
+                xaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
                 xaxis_range=[
                     0,
                     max(35, region_rates["unemployment_rate"].max() + 5),
                 ],
                 showlegend=False,
-                yaxis={"categoryorder": "total ascending"},
+                yaxis={
+                    "categoryorder": "total ascending",
+                    "gridcolor": "#334155",
+                    "zerolinecolor": "#64748B",
+                },
             )
             st.plotly_chart(region_chart, use_container_width=True)
 
@@ -612,8 +647,15 @@ if df is not None:
         heatmap.update_layout(
             xaxis_title="Education Level",
             yaxis_title="Age Group",
-            font={"family": "Inter, sans-serif", "color": "#17324D"},
-            coloraxis_colorbar_title="Rate (%)",
+            font={"family": "Inter, sans-serif", "color": "#FFFFFF"},
+            paper_bgcolor="#0B1220",
+            plot_bgcolor="#0B1220",
+            xaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
+            yaxis={"gridcolor": "#334155", "zerolinecolor": "#64748B"},
+            coloraxis_colorbar={
+                "title": {"text": "Rate (%)", "font": {"color": "#FFFFFF"}},
+                "tickfont": {"color": "#FFFFFF"},
+            },
         )
         st.plotly_chart(heatmap, use_container_width=True)
 
@@ -649,7 +691,10 @@ if df is not None:
             explorer_df = explorer_df[matches.any(axis=1)]
 
         st.caption(f"Showing {len(explorer_df):,} matching records")
-        st.dataframe(explorer_df, use_container_width=True, height=400)
+        st.dataframe(
+            explorer_df,
+            width="stretch"
+        )
         st.download_button(
             label="Download filtered data as CSV",
             data=explorer_df.to_csv(index=False).encode("utf-8"),
